@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relationship with Questionnaires.
+     * Ono to One
+     */
+
+    public function questionnaire()
+    {
+        return $this->hasOne(Questionnaire::class);
+    }
 }
