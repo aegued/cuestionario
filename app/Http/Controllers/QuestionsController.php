@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $questions = Question::all();
+
+        return view('questions.index',[
+            'questions' =>  $questions
+        ]);
     }
 
     /**

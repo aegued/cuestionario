@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Questionnaire;
 use Illuminate\Http\Request;
 
 class QuestionnairesController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $questionnaires = Questionnaire::all();
+
+        return view('questionnaires.index',[
+            'questionnaires'    =>  $questionnaires
+        ]);
     }
 
     /**
