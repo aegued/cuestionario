@@ -9,7 +9,7 @@
             <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-plus"></i>
                         </button>
                     </li>

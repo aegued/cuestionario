@@ -9,7 +9,7 @@ class Question extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = ['question'];
+    protected $fillable = ['question', 'questionnaire_id'];
 
     /**
      * Relationship with Questionnaire

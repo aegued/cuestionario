@@ -54,11 +54,9 @@ class QuestionnairesController extends Controller
     public function show($id)
     {
         $questionnaire = Questionnaire::find($id);
-        $questions = $questionnaire->questions;
 
         return view('questionnaires.show', [
-            'questionnaire'     =>  $questionnaire,
-            'questions'         =>  $questions
+            'questionnaire'     =>  $questionnaire
         ]);
     }
 
