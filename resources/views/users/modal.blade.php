@@ -43,6 +43,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="role1" name="role" value="admin">
+                                    <label for="role1" class="custom-control-label">Administrador</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="role2" name="role" checked value="user">
+                                    <label for="role2" class="custom-control-label">Usuario</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="modal-footer justify-content-between">

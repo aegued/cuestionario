@@ -131,6 +131,10 @@
                         form.find('#username').val(user.username);
                         form.find('#email').val(user.email);
                         form.find('#password').val('');
+                        if (user.role === 'admin')
+                            form.find('#role1').prop('checked', true);
+                        if (user.role === 'user')
+                            form.find('#role2').prop('checked', true);
                     }).fail(function (response) {
                         let error = response.responseJSON.error;
                         toastr.error(error);

@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->group(function (){
+Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('users', 'UsersController');
     Route::resource('questionnaires', 'QuestionnairesController');

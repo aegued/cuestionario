@@ -69,8 +69,6 @@ class UsersController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
      */
     public function update(Request $request, $id)
     {
@@ -102,6 +100,7 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
+        $user->role = $request->role;
         $user->save();
 
         return response()->json(['success' => true, 'user' => $user], 200);
