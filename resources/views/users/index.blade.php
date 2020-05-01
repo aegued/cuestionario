@@ -86,6 +86,8 @@
             //Modal Form
             let userModal = $('.user-modal');
             let form = userModal.find('form');
+            let formLastAction = form.attr('action');
+            let formLastMethod = form.attr('method');
 
             //Event when the table is draw
             table.on('draw', function () {
@@ -232,6 +234,8 @@
             //Modals Events
             userModal.on('hidden.bs.modal', function (e) {
                 form[0].reset();
+                form.attr('action', formLastAction);
+                form.attr('method', formLastMethod);
                 resetErrorsFeedback(form);
             });
         })
