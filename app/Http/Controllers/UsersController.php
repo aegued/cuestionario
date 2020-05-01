@@ -55,15 +55,56 @@ class UsersController extends Controller
     }
 
     /**
+     * Show a resource in storage.
+     */
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        if(!$user)
+            return response()->json(['success' => false, 'error' => 'El Usuario no existe.'], 404);
+
+        return response()->json(['success' => true, 'user' => $user], 200);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if(!$user)
+            return response()->json(['success' => false, 'error' => 'El Usuario no existe.'], 404);
+
+        $messages = [
+            'name.required'             =>  'El nombre del usuario es requerido.',
+            'username.required'         =>  'El nombre de usuario es requerido.',
+            'username.unique'           =>  'El nombre de usuario ya esta en uso.',
+            'email.required'            =>  'El email es requerido.',
+            'email.unique'              =>  'Este email ya esta en uso.',
+            'email.email'               =>  'El email no es un correo electronico valido.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'name'          =>  'required',
+            'username'      =>  'required',
+            'email'         =>  'required|email',
+        ], $messages);
+
+        if ($validator->fails())
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 409);
+
+        if ($request->password)
+            $user->password = bcrypt($request->password);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->save();
+
+        return response()->json(['success' => true, 'user' => $user], 200);
     }
 
     /**

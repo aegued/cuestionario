@@ -83,6 +83,10 @@
                 ]
             });
 
+            //Modal Form
+            let userModal = $('.user-modal');
+            let form = userModal.find('form');
+
             //Event when the table is draw
             table.on('draw', function () {
                 //Delete User
@@ -111,24 +115,42 @@
                         }
                     ).set('labels', {ok: 'Si', cancel:"Cancelar"});
                 });
-            });
 
-            //Modal Form
-            let userModal = $('.user-modal');
-            let form = userModal.find('form');
-            let formUrl = form.attr('action');
+                //Edit User
+                $('button.edit').on('click', function () {
+                    let url = $(this).data('url');
+
+                    $.get(url, function () {
+                        userModal.modal('show');
+                    }).done(function (response) {
+                        let user = response.user;
+
+                        form.attr('action', '/users/'+user.id);
+                        form.attr('method', 'PUT');
+                        form.find('#name').val(user.name);
+                        form.find('#username').val(user.username);
+                        form.find('#email').val(user.email);
+                        form.find('#password').val('');
+                    }).fail(function (response) {
+                        let error = response.responseJSON.error;
+                        toastr.error(error);
+                    });
+                });
+            });
 
             //Submit form to save user data
             form.submit(function (e) {
                 e.preventDefault();
 
+                let formUrl = form.attr('action');
+                let formMethod = form.attr('method');
                 let btnSubmit = form.find('.btn-primary');
                 let btnSubmitValue = btnSubmit.text();
 
                 resetErrorsFeedback(form);
 
                 $.ajax({
-                    method: 'POST',
+                    method: formMethod,
                     url: formUrl,
                     data: form.serialize(),
                     beforeSend: function(){
