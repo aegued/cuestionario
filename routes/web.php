@@ -21,9 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('users', 'UsersController');
-    Route::resource('questionnaires', 'QuestionnairesController');
+    Route::resource('questionnaires', 'QuestionnairesController')->except('edit');
+    Route::get('questionnaires/{id}/edit', 'QuestionnairesController@edit')->name('questionnaires.edit');
     Route::resource('questions', 'QuestionsController');
 
     //DataTables
     Route::get('get_users_datatables', 'UsersController@getUsersDataTable')->name('getUsers');
+    Route::get('get_questionnaires_datatables', 'QuestionnairesController@getQuestionnairesDataTable')->name('getQuestionnaires');
 });

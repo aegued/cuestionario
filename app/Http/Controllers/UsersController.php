@@ -124,7 +124,7 @@ class UsersController extends Controller
     /**
      * Return DataTables query of Users
      * */
-    public function getUsersDataTable(Request $request)
+    public function getUsersDataTable()
     {
         $users = User::query();
         $datatables = Datatables::of($users)
