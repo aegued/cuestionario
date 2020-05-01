@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AnswersController extends Controller
 {
@@ -80,5 +82,20 @@ class AnswersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getAnswersDataTable(Request $request)
+    {
+        $answers = Answer::where('question_id','=', $request->question_id)->get();
+        $datatables = Datatables::of($answers)
+            ->editColumn('actions', function ($answer){
+                $output = "<button class='btn btn-info btn-sm show' data-id='".$answer->id."'><i class='fas fa-eye'></i></button> ";
+                $output .= "<button class='btn btn-success btn-sm edit' data-id='".$answer->id."' data-url='".route('answers.edit',$answer->id)."'><i class='fas fa-edit'></i></button> ";
+                $output .= "<button class='btn btn-danger btn-sm delete' data-id='".$answer->id."' data-url='".route('answers.destroy',$answer->id)."'><i class='fas fa-trash'></i></button>";
+
+                return $output;
+            })->rawColumns(['actions']);
+
+        return $datatables->make(true);
     }
 }

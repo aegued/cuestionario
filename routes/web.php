@@ -23,9 +23,11 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::resource('users', 'UsersController');
     Route::resource('questionnaires', 'QuestionnairesController');
     Route::resource('questions', 'QuestionsController');
+    Route::resource('answers', 'AnswersController');
 
     //DataTables
     Route::get('get_users_datatables', 'UsersController@getUsersDataTable')->name('getUsers');
     Route::get('get_questionnaires_datatables', 'QuestionnairesController@getQuestionnairesDataTable')->name('getQuestionnaires');
     Route::get('get_questions_datatables', 'QuestionsController@getQuestionsDataTable')->name('getQuestions');
+    Route::get('get_answers_datatables', 'AnswersController@getAnswersDataTable')->name('getAnswers');
 });

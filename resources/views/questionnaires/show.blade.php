@@ -95,6 +95,10 @@
                 }
             });
 
+            /*
+            * Questions Table
+            * */
+
             //Init DataTables
             var tableQuestions = $('#questions-table').DataTable({
                 processing: true,
@@ -168,6 +172,11 @@
                         toastr.error(error);
                     });
                 });
+
+                //Show Answers from a Question
+                $('#questions-table button.show').on('click', function () {
+                    drawAnswersTable($(this).data('id'));
+                });
             });
 
             //Submit form to save user data
@@ -235,6 +244,42 @@
                 formQuestion.attr('method', formQuestionLastMethod);
                 resetErrorsFeedback(formQuestion);
             });
+
+
+            /*
+            * Answers Table
+            * Separated in a function
+            * */
+
+            function drawAnswersTable(questionID) {
+                //Init DataTables
+                let tableAnswer = $('#answers-table');
+
+                tableAnswer.DataTable().destroy();
+
+                var tableAnswers = tableAnswer.DataTable({
+                    processing: true,
+                    serverSide: true,
+                    info: false,
+                    searching: false,
+                    paging: false,
+                    language: {
+                        url: "/datatable_spanish.json"
+                    },
+                    ajax: {
+                        url: '{!! route('getAnswers') !!}',
+                        data: {'question_id': questionID}
+                    },
+                    columns: [
+                        { data: 'id', name: 'id' },
+                        { data: 'answer', name: 'answer' },
+                        { data: 'actions', name: 'actions' },
+                    ]
+                });
+
+
+            }
+
         });
     </script>
 @endsection
