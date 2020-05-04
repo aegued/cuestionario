@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('questionnaire_id');
             $table->string('question');
+            $table->string('answer');
             $table->timestamps();
 
             $table->foreign('questionnaire_id')

@@ -86,12 +86,11 @@ class QuestionnairesController extends Controller
 
         $messages = [
             'name.required'             =>  'El nombre del Cuestionario es requerido.',
-            'name.unique'               =>  'El nombre del Cuestionario ya esta en uso.',
             'user_id.required'          =>  'La Usuario es requerido.',
         ];
 
         $validator = Validator::make($request->all(), [
-            'name'          =>  'required|unique:questionnaires',
+            'name'          =>  'required',
             'user_id'       =>  'required',
         ], $messages);
 

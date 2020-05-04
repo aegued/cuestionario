@@ -38,11 +38,13 @@ class QuestionsController extends Controller
     {
         $messages = [
             'question.required'             =>  'La Pregunta es requerida.',
+            'answer.required'               =>  'La Respuesta es requerida.',
             'questionnaire_id.required'     =>  'El Cuestionario es requerido.',
         ];
 
         $validator = Validator::make($request->all(), [
             'question'          =>  'required',
+            'answer'            =>  'required',
             'questionnaire_id'  =>  'required',
         ], $messages);
 
@@ -91,11 +93,13 @@ class QuestionsController extends Controller
 
         $messages = [
             'question.required'             =>  'La Pregunta es requerida.',
+            'answer.required'               =>  'La Respuesta es requerida.',
             'questionnaire_id.required'     =>  'El Cuestionario es requerido.',
         ];
 
         $validator = Validator::make($request->all(), [
             'question'          =>  'required',
+            'answer'            =>  'required',
             'questionnaire_id'  =>  'required',
         ], $messages);
 
@@ -103,6 +107,7 @@ class QuestionsController extends Controller
             return response()->json(['success' => false, 'errors' => $validator->errors()], 409);
 
         $question->questionnaire_id = $request->questionnaire_id;
+        $question->answer = $request->answer;
         $question->question = $request->question;
         $question->save();
 
@@ -130,8 +135,7 @@ class QuestionsController extends Controller
         $questions = Question::where('questionnaire_id','=', $request->questionnaire_id)->get();
         $datatables = Datatables::of($questions)
             ->editColumn('actions', function ($question){
-                $output = "<button class='btn btn-info btn-sm show' data-id='".$question->id."'><i class='fas fa-eye'></i></button> ";
-                $output .= "<button class='btn btn-success btn-sm edit' data-id='".$question->id."' data-url='".route('questions.edit',$question->id)."'><i class='fas fa-edit'></i></button> ";
+                $output = "<button class='btn btn-success btn-sm edit' data-id='".$question->id."' data-url='".route('questions.edit',$question->id)."'><i class='fas fa-edit'></i></button> ";
                 $output .= "<button class='btn btn-danger btn-sm delete' data-id='".$question->id."' data-url='".route('questions.destroy',$question->id)."'><i class='fas fa-trash'></i></button>";
 
                 return $output;

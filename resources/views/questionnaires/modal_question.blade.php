@@ -16,6 +16,11 @@
                         <textarea name="question" id="question" class="form-control" placeholder="Escriba la pregunta ..."></textarea>
                         <span id="exampleInputEmail1-error" class="error invalid-feedback d-none"></span>
                     </div>
+                    <div class="form-group">
+                        <label for="answer">Respuesta</label>
+                        <textarea name="answer" id="answer" class="form-control" placeholder="Escriba la respuesta ..."></textarea>
+                        <span id="exampleInputEmail1-error" class="error invalid-feedback d-none"></span>
+                    </div>
                 </div>
 
                 <div class="modal-footer justify-content-between">

@@ -9,7 +9,7 @@ class Question extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = ['question', 'questionnaire_id'];
+    protected $fillable = ['question', 'answer', 'questionnaire_id'];
 
     /**
      * Relationship with Questionnaire
@@ -18,14 +18,5 @@ class Question extends Model
     public function questionnaire()
     {
         return $this->belongsToMany(Questionnaire::class);
-    }
-
-    /**
-     * Relationship with Answers
-     * One to Many
-     */
-    public function answers()
-    {
-        return $this->hasMany(Answer::class);
     }
 }
