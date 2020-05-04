@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+body{
+    height: 100%;
+    background-color: #0c525d;
+}
+
+.answer-fields{min-height: 200px;}
