@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Questionnaire;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        $questionnaire = $user->questionnaire;
+        $questions = $questionnaire->questions;
+
+        return view('front.home', [
+            'user'          =>  $user,
+            'questionnaire' =>  $questionnaire,
+            'questions'     =>  $questions,
+        ]);
     }
 }

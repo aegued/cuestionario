@@ -143,4 +143,15 @@ class QuestionsController extends Controller
 
         return $datatables->make(true);
     }
+
+    //Check Question/Answer
+    public function checkAnswer(Request $request, $id)
+    {
+        $question = Question::find($id);
+
+        if ($question->answer == $request->answer)
+            return response()->json(['check' => true], 200);
+
+        return response()->json(['check' => false], 200);
+    }
 }
