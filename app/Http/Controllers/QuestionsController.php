@@ -18,9 +18,7 @@ class QuestionsController extends Controller
     {
         $questions = Question::all();
 
-        return view('questions.index',[
-            'questions' =>  $questions
-        ]);
+        return view('questions.index');
     }
 
     /**
@@ -126,6 +124,7 @@ class QuestionsController extends Controller
         return response()->json(['success' => true, 'message' => 'Pregunta eliminada correctamente.'], 200);
     }
 
+    //Get Question to draw DataTables
     public function getQuestionsDataTable(Request $request)
     {
         $questions = Question::where('questionnaire_id','=', $request->questionnaire_id)->get();

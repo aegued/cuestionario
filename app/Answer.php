@@ -11,7 +11,7 @@ class Answer extends Model
      *
      * @var array
      */
-    protected $fillable = ['answer'];
+    protected $fillable = ['answer', 'question_id'];
 
     /**
      * Relationship with Question
