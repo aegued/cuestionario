@@ -109,6 +109,7 @@ class QuestionsController extends Controller
         $question->questionnaire_id = $request->questionnaire_id;
         $question->answer = $request->answer;
         $question->question = $request->question;
+        $question->help = $request->help;
         $question->save();
 
         return response()->json(['success' => true, 'question' => $question], 200);
@@ -153,5 +154,14 @@ class QuestionsController extends Controller
             return response()->json(['check' => true], 200);
 
         return response()->json(['check' => false], 200);
+    }
+
+    //Get Help
+    public function getHelp($id)
+    {
+        $user = auth()->user();
+        $question = Question::find($id);
+
+        return response()->json(['help' => $question->help], 200);
     }
 }

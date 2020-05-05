@@ -18,13 +18,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('questions/{question}/check', 'QuestionsController@checkAnswer')->name('questions.check');
+Route::get('questions/{question}/help','QuestionsController@getHelp')->name('questions.help');
 
 Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('users', 'UsersController');
     Route::resource('questionnaires', 'QuestionnairesController');
     Route::resource('questions', 'QuestionsController');
-
 
     //DataTables
     Route::get('get_users_datatables', 'UsersController@getUsersDataTable')->name('getUsers');

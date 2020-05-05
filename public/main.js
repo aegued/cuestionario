@@ -15,6 +15,10 @@ $(document).ready(function(){
         }
     });
 
+    $('.tab-pane form').on('submit', function () {
+        return false;
+    });
+
     $(".next-step").click(function (e) {
         let $active = $('.nav-pills li > a.active');
         $active.parent().next().find('.nav-link').removeClass('disabled');
@@ -47,6 +51,17 @@ $(document).ready(function(){
     $(".prev-step").click(function (e) {
         var $active = $('.nav-pills li > a.active');
         prevTab($active);
+    });
+
+    $('.help').click(function (e) {
+        let $this = $(this);
+        let url = $this.data('url');
+        let modal = $this.parent().find('.modal');
+
+        $.get(url, function (data) {
+            modal.find('.modal-body').html("<p>"+data.help+"</p>");
+            modal.modal('show');
+        });
     });
 
     function nextTab(elem) {

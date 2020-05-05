@@ -26,6 +26,7 @@
                                 <td>ID</td>
                                 <td>Pregunta</td>
                                 <td>Respuesta</td>
+                                <td>Pista</td>
                                 <td>Acciones</td>
                             </tr>
                             </thead>
@@ -91,6 +92,7 @@
                     { data: 'id', name: 'id' },
                     { data: 'question', name: 'question' },
                     { data: 'answer', name: 'answer' },
+                    { data: 'help', name: 'help' },
                     { data: 'actions', name: 'actions' },
                 ]
             });
@@ -143,6 +145,7 @@
                         formQuestion.attr('method', 'PUT');
                         formQuestion.find('#question').val(question.question);
                         formQuestion.find('#answer').val(question.answer);
+                        formQuestion.find('#help').val(question.help);
                     }).fail(function (response) {
                         let error = response.responseJSON.error;
                         toastr.error(error);

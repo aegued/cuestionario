@@ -38,6 +38,23 @@
                                         </div>
 
                                         <div class="form-group text-center">
+                                            @if($question->help)
+                                                <div class="modal fade" id="modal-help-{{ $question->id }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                                        <div class="modal-content bg-info text-light">
+                                                            <div class="modal-header text-center d-block">
+                                                                Pista
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body text-left"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button type="button" class="btn btn-success btn-sm help float-right" data-url="{{ route('questions.help', $question->id) }}">Solicitar Pista</button>
+                                            @endif
                                             <button type="button" class="btn btn-primary btn-sm prev-step">Anterior</button>
                                             <button type="button" class="btn btn-primary btn-sm next-step">Siguiente</button>
                                         </div>
@@ -66,7 +83,6 @@
 @endsection
 
 @section('css')
-
 @endsection
 
 @section('js')
