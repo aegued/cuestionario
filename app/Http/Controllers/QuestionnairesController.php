@@ -143,4 +143,13 @@ class QuestionnairesController extends Controller
 
         return $datatables->make(true);
     }
+
+    public function setFinish($id)
+    {
+        $questionnaire = Questionnaire::find($id);
+        $questionnaire->completed = true;
+        $questionnaire->save();
+
+        return response()->json(['completed' => true], 200);
+    }
 }

@@ -1,8 +1,17 @@
 @extends('front.layouts.app')
 
 @section('content')
-    <div class="row justify-content-center mt-0">
-        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+    <div class="row justify-content-center mt-0 area-panels">
+        @if($questionnaire->completed)
+            <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2 finish-panel">
+                <div class="card px-5 py-3 mt-3 mb-3">
+                    <div class="alert alert-success mb-0">
+                        <h1>Cuestionario Realizado</h1>
+                    </div>
+                </div>
+            </div>
+        @else
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2 quest-panel">
             @if($questionnaire->start > now())
             <h2 class="text-light">El cuestionario se abrirá en:</h2>
             <div id="countdown">
@@ -68,17 +77,17 @@
                                     <form>
                                         <div class="form-group text-center">
                                             <button type="button" class="btn btn-primary btn-sm prev-step">Anterior</button>
+                                            <button type="button" class="btn btn-primary btn-sm finish-step" data-url="{{ route('questionnaires.finish', $questionnaire->id) }}">Finalizar</button>
                                         </div>
-
                                     </form>
                                 </div>
                         </div>
-
                     </div>
                 </div>
             </div>
             @endif
         </div>
+        @endif
     </div>
 @endsection
 

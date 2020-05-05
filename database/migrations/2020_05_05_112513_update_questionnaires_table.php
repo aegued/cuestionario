@@ -15,6 +15,7 @@ class UpdateQuestionnairesTable extends Migration
     {
         Schema::table('questionnaires', function (Blueprint $table) {
             $table->timestamp('start')->default(now())->after('name');
+            $table->boolean('completed')->default(false)->after('start');
         });
     }
 
@@ -27,6 +28,7 @@ class UpdateQuestionnairesTable extends Migration
     {
         Schema::table('questionnaires', function (Blueprint $table) {
             $table->dropColumn('start');
+            $table->dropColumn('completed');
         });
     }
 }

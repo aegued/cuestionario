@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Questionnaire;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

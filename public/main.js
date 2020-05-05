@@ -53,6 +53,21 @@ $(document).ready(function(){
         prevTab($active);
     });
 
+    $(".finish-step").click(function () {
+        let url = $(this).data('url');
+
+        $.get(url, function () {
+            $('.quest-panel').remove();
+            $('.area-panels').append(
+                '<div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2 finish-panel">' +
+                '<div class="card px-5 py-3 mt-3 mb-3">' +
+                '<div class="alert alert-success mb-0">' +
+                '<h1>Cuestionario Realizado</h1>' +
+                '</div></div></div>'
+            );
+        });
+    });
+
     $('.help').click(function (e) {
         let $this = $(this);
         let url = $this.data('url');
