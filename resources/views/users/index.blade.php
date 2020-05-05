@@ -71,7 +71,7 @@
                 serverSide: true,
                 scrollX: true,
                 language: {
-                    url: "/datatable_spanish.json"
+                    url: "{{ asset('datatable_spanish.json') }}"
                 },
                 ajax: '{!! route('getUsers') !!}',
                 columns: [
@@ -128,7 +128,7 @@
                     }).done(function (response) {
                         let user = response.user;
 
-                        form.attr('action', '/users/'+user.id);
+                        form.attr('action', "{{ url('users') }}/"+user.id);
                         form.attr('method', 'PUT');
                         form.find('#name').val(user.name);
                         form.find('#username').val(user.username);

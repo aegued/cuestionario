@@ -83,7 +83,7 @@
                 paging: false,
                 scrollX: true,
                 language: {
-                    url: "/datatable_spanish.json"
+                    url: "{{ asset('datatable_spanish.json') }}"
                 },
                 ajax: {
                     url: '{!! route('getQuestions') !!}',
@@ -142,7 +142,7 @@
                     }).done(function (response) {
                         let question = response.question;
 
-                        formQuestion.attr('action', '/questions/'+question.id);
+                        formQuestion.attr('action', '{{ url("questions") }}/'+question.id);
                         formQuestion.attr('method', 'PUT');
                         formQuestion.find('#question').val(question.question);
                         formQuestion.find('#answer').val(question.answer);

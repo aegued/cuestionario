@@ -90,7 +90,7 @@
                 serverSide: true,
                 scrollX: true,
                 language: {
-                    url: "/datatable_spanish.json"
+                    url: "{{ asset('datatable_spanish.json') }}"
                 },
                 ajax: '{!! route('getQuestionnaires') !!}',
                 columns: [
@@ -146,7 +146,7 @@
                     }).done(function (response) {
                         let questionnaire = response.questionnaire;
 
-                        form.attr('action', '/questionnaires/'+questionnaire.id);
+                        form.attr('action', '{{ url("questionnaires") }}/'+questionnaire.id);
                         form.attr('method', 'PUT');
                         form.find('#name').val(questionnaire.name);
                         form.find('#start').val(questionnaire.start);
