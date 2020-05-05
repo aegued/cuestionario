@@ -28,6 +28,7 @@ class QuestionnairesController extends Controller
      */
     public function store(Request $request)
     {
+//        return response()->json($request->start, 409);
         $messages = [
             'name.required'             =>  'El nombre del Cuestionario es requerido.',
             'name.unique'               =>  'El nombre del Cuestionario ya esta en uso.',
@@ -124,7 +125,7 @@ class QuestionnairesController extends Controller
         $questionnaires = Questionnaire::query();
         $datatables = Datatables::of($questionnaires)
             ->editColumn('created_at', function ($questionnaire){
-                return Carbon::createFromTimeString($questionnaire->created_at)->format('m/d/Y H:i:s');
+                return Carbon::createFromTimeString($questionnaire->start)->format('m/d/Y H:i:s');
             })
             ->editColumn('user', function ($questionnaire){
                 $user = $questionnaire->user;

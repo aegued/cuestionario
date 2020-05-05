@@ -47,6 +47,8 @@
     <!-- AlertifyJS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Tempus Dominus -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 @endsection
 
 @section('scripts')
@@ -61,12 +63,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- AlertifyJS -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <!-- Tempus Dominus -->
+    <script src="{{ asset('plugins/moment-with-locales.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
     <script>
         $(function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            //Setting DateTimePicker
+            $('#datetimepicker1').datetimepicker({
+                format: "YYYY-MM-DD h:m:s"
             });
 
             //Initialize Select2 Elements
@@ -138,6 +148,7 @@
                         form.attr('action', '/questionnaires/'+questionnaire.id);
                         form.attr('method', 'PUT');
                         form.find('#name').val(questionnaire.name);
+                        form.find('#start').val(questionnaire.start);
                         form.find('#user_id').append('<option value="'+questionnaire.user_id+'" selected>'+questionnaire.user.name+'</option>');
                     }).fail(function (response) {
                         let error = response.responseJSON.error;
