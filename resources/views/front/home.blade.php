@@ -18,7 +18,7 @@
                 {{ $start }}
             </div>
             @else
-            <div class="card px-5 py-3 mt-3 mb-3">
+            <div class="card py-3 mt-3 mb-3">
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="nav nav-pills justify-content-center mb-3" id="questions-tab" role="tablist">
@@ -34,7 +34,7 @@
                                 </li>
                         </ul>
 
-                        <div class="tab-content" id="questions-tabContent">
+                        <div class="tab-content px-5" id="questions-tabContent">
                             @foreach($questions as $question)
                                 <div class="tab-pane fade show" id="questions-content-{{ $question->id }}" role="tabpanel">
                                     <h4 class="mb-5">{{ $question->question }}</h4>

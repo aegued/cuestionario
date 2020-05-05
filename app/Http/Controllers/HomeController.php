@@ -24,6 +24,10 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
+
+        if ($user->role == 'admin')
+            return redirect()->route('dashboard');
+
         $questionnaire = $user->questionnaire;
         $questions = $questionnaire->questions;
 

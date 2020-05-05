@@ -88,6 +88,7 @@
             var table = $('#questionnaires-table').DataTable({
                 processing: true,
                 serverSide: true,
+                scrollX: true,
                 language: {
                     url: "/datatable_spanish.json"
                 },

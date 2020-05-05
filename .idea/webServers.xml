@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a14d4f73-2fae-4b55-8396-a9755b36bb5a" name="ultraweb" url="http://ultraweb.es">
+        <fileTransfer host="ultraweb.es" port="21" rootFolder="/domains/ultraweb.es/public_html/projects/cuestionario">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

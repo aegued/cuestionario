@@ -81,6 +81,7 @@
                 info: false,
                 searching: false,
                 paging: false,
+                scrollX: true,
                 language: {
                     url: "/datatable_spanish.json"
                 },
