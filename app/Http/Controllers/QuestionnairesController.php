@@ -100,6 +100,7 @@ class QuestionnairesController extends Controller
 
         $questionnaire->user_id = $request->user_id;
         $questionnaire->name = $request->name;
+        $questionnaire->start = $request->start;
         $questionnaire->save();
 
         return response()->json(['success' => true, 'questionnaire' => $questionnaire], 200);

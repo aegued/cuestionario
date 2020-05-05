@@ -3,10 +3,15 @@
 @section('content')
     <div class="row justify-content-center mt-0">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            @if($questionnaire->start > now())
+            <h2 class="text-light">El cuestionario se abrirá en:</h2>
+            <div id="countdown">
+                {{ $start }}
+            </div>
+            @else
             <div class="card px-5 py-3 mt-3 mb-3">
                 <div class="row">
                     <div class="col-md-12">
-
                         <ul class="nav nav-pills justify-content-center mb-3" id="questions-tab" role="tablist">
                             @php $count = 0; @endphp
                             @foreach($questions as $question)
@@ -55,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 @endsection
@@ -65,4 +71,10 @@
 
 @section('js')
     <script src="{{ asset('main.js') }}"></script>
+    <script src="{{ asset('plugins/countdown.js') }}"></script>
+    <script>
+        $(function () {
+            $('#countdown').countdown()
+        });
+    </script>
 @endsection
