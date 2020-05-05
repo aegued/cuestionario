@@ -12,11 +12,11 @@
                             @foreach($questions as $question)
                                 @php $count++; @endphp
                                 <li class="nav-item">
-                                    <a class="nav-link" id="questions-tab-1" data-toggle="pill" href="#questions-content-{{ $question->id }}" role="tab">{{ $count }}</a>
+                                    <a class="nav-link disabled" id="questions-tab-1" data-toggle="pill" href="#questions-content-{{ $question->id }}" role="tab">{{ $count }}</a>
                                 </li>
                             @endforeach
                                 <li class="nav-item">
-                                    <a class="nav-link" id="questions-tab-1" data-toggle="pill" href="#finish-content" role="tab">{{ $count+1 }}</a>
+                                    <a class="nav-link disabled" id="questions-tab-1" data-toggle="pill" href="#finish-content" role="tab">{{ $count+1 }}</a>
                                 </li>
                         </ul>
 

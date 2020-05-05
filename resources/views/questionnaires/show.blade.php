@@ -195,7 +195,7 @@
                         }
 
                         //Set answer errors messages
-                        if (errors.question){
+                        if (errors.answer){
                             let inputAnswer = formQuestion.find('#answer');
                             let feedback = inputAnswer.parent().find('.invalid-feedback');
 

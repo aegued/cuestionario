@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     $('#questions-tab li:first-child a').addClass('active');
+    $('#questions-tab li:first-child a').removeClass('disabled');
     $('#questions-tabContent .tab-pane:first-child').addClass('active');
     $('.tab-pane:first-child .prev-step').addClass('d-none');
 
